@@ -5,20 +5,20 @@ import './tracker_data/tracker_data.dart';
 
 class Player extends StatefulWidget {
   final String name;
-  final int index;
   final ColorItem colorItem;
   final double height;
   final double width;
   final void Function(String) removePlayer;
+  final Map<String, int> playerState;
 
   Player({
     super.key,
     required this.name,
-    required this.index,
     required this.colorItem,
     required this.height,
     required this.width,
     required this.removePlayer,
+    required this.playerState,
   });
 
   String playerKey() => colorItem.name + name;
@@ -28,15 +28,14 @@ class Player extends StatefulWidget {
 }
 
 class _PlayerState extends State<Player> {
-  int appeal = 0;
-  int conservation = 0;
-  int income = 0;
+  late Map<String, int> playerState;
   late String name;
 
   @override
   void initState() {
     setState(() {
       name = widget.name;
+      playerState = widget.playerState;
     });
     super.initState();
   }
@@ -66,26 +65,26 @@ class _PlayerState extends State<Player> {
 
   void changeAppeal(int value) {
     setState(() {
-      int newAppeal = appeal + value;
+      int newAppeal = playerState['appeal']! + value;
       if (newAppeal < 0) {
-        appeal = 0;
+        playerState['appeal'] = 0;
       } else if (newAppeal > 113) {
-        appeal = 113;
+        playerState['appeal'] = 113;
       } else {
-        appeal = newAppeal;
+        playerState['appeal'] = newAppeal;
       }
     });
   }
 
   void changeConservation(int value) {
     setState(() {
-      int newConservation = conservation + value;
+      int newConservation = playerState['conservation']! + value;
       if (newConservation < 0) {
-        conservation = 0;
+        playerState['conservation'] = 0;
       } else if (newConservation > 41) {
-        conservation = 41;
+        playerState['conservation'] = 41;
       } else {
-        conservation = newConservation;
+        playerState['conservation'] = newConservation;
       }
     });
   }
@@ -131,8 +130,8 @@ class _PlayerState extends State<Player> {
                   height: trackerDataHeight,
                   changeAppeal: changeAppeal,
                   changeConservation: changeConservation,
-                  appeal: appeal,
-                  conservation: conservation,
+                  appeal: playerState['appeal'],
+                  conservation: playerState['conservation'],
                 ),
               ],
             ),

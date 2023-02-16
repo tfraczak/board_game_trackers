@@ -6,8 +6,8 @@ import 'score_tracker.dart';
 
 class TrackerData extends StatelessWidget {
   final double height;
-  final int appeal;
-  final int conservation;
+  final int? appeal;
+  final int? conservation;
   final void Function(int) changeAppeal;
   final void Function(int) changeConservation;
 

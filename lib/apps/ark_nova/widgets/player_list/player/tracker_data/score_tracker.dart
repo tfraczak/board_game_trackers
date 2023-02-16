@@ -5,7 +5,7 @@ import 'dart:math' as math;
 class ScoreTracker extends StatefulWidget {
   final String trackerType;
   final void Function(int) changeTrackerValue;
-  final int trackerValue;
+  final int? trackerValue;
   final double height;
 
   const ScoreTracker({

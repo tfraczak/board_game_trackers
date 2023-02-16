@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import '../../classes/index.dart' show ColorItem, PlayerItem;
 import '../../constants/index.dart' show colors;
@@ -69,15 +71,12 @@ class _PlayerListState extends State<PlayerList> {
     List<Widget> list = [];
     double playerHeight = (listHeight / 4) - 9;
     for (var i = 0; i < playerList.length; i++) {
-      list.add(playerList[i].build(
-        index: i,
+      list.add(playerList[i].getOrBuildPlayer(
         height: playerHeight,
         width: listWidth,
         removePlayer: removePlayer,
       ));
-      if (i != playerList.length - 1) {
-        list.add(Divider(height: 12.0));
-      }
+      if (i != playerList.length - 1) list.add(SizedBox(height: 12.0));
     }
     if (playerList.length < 4) {
       return [

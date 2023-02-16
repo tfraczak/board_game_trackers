@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './widgets/player_list/player_list.dart';
 import 'classes/index.dart';
 import 'widgets/toolbar/toolbar.dart';
@@ -31,6 +32,10 @@ class _ArkNovaState extends State<ArkNova> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     Toolbar toolbar = Toolbar(setGameName: setGameName, height: toolbarHeight);
     Divider divider = Divider(thickness: 1.0, color: Colors.black12);
     return Center(
