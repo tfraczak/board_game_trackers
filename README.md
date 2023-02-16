@@ -4,6 +4,8 @@ A simple app for a library of board game state trackers.
 
 # Try it out!
 
+[Desktop web app](https://tfraczak.github.io/bgt_web_app/)
+
 [Google Drive Directory](https://drive.google.com/drive/folders/17TEgfCMIWQNZlDlN-vvCvSgRSVcBslAv?usp=sharing)
 
 # Changelog
